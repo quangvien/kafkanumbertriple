@@ -2,7 +2,7 @@
 A simple demonstration of Kafka messaging system.
 
 ## Description
-A number consumer that consumes numbers from a Kafka topic and triple it. Running this with [kafkanumberdouble](https://github.com/quangnvien/kafkanumberdouble) to see how different Kafka consuming services work. Both services consume the same Kafka topic. 
+A number consumer that consumes numbers from a [Kafka topic](https://github.com/quangnvien/kafkanumberprovider) and triple it. Running this with [kafkanumberdouble](https://github.com/quangnvien/kafkanumberdouble) to see how different Kafka consuming services work. Both services consume the same Kafka topic. 
 
 ## Usage
 - Start Zookeeper
