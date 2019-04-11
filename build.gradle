@@ -1,0 +1,43 @@
+apply plugin: 'java'
+apply plugin: 'application'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+
+sourceCompatibility = 1.12
+targetCompatibility = 1.12
+mainClassName = 'vn.quang.KafkaMain'
+
+buildscript {
+    ext.spring = '2.1.4.RELEASE'
+    ext.kafkaClient = '2.1.0'
+	ext.springKafka = '2.2.5.RELEASE'
+	ext.jackson =  '2.9.8'
+	ext.slf4jVersion = '1.7.26'
+	ext.log4j = '2.11.2'
+	
+    repositories {
+        jcenter()
+    }
+    
+    dependencies {
+    	classpath "org.springframework.boot:spring-boot-gradle-plugin:${spring}"	
+    }    
+}
+
+repositories {
+    jcenter()
+}
+
+configurations {
+	compile.exclude module: 'spring-boot-starter-logging'
+}
+    
+dependencies {
+	compile "org.apache.kafka:kafka-clients:$kafkaClient"
+	compile "org.springframework.kafka:spring-kafka:$springKafka"
+	compile "org.springframework.boot:spring-boot-starter:$spring"
+	compile "org.springframework.boot:spring-boot-starter-parent:$spring"
+	compile "org.springframework.boot:spring-boot-starter-log4j2:$spring"
+	compile "com.fasterxml.jackson.core:jackson-databind:$jackson"	
+  	compile "org.apache.logging.log4j:log4j-core:$log4j"
+}
