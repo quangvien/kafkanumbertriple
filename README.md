@@ -5,7 +5,7 @@ A simple demonstration of Kafka messaging system.
 A number consumer that consumes numbers from a Kafka topic and triple it. Running this with [kafkanumberdouble](https://github.com/quangnvien/kafkanumberdouble) to see how different Kafka consuming services work. Both services consume the same Kafka topic. 
 
 ## Usage
-- Start Zookeeper Server
+- Start Zookeeper
 ```bash
 bin\zookeeper-server-start.sh config\zookeeper.properties
 ```
@@ -13,7 +13,7 @@ bin\zookeeper-server-start.sh config\zookeeper.properties
 ```bash
 bin\kafka-server-start.sh config\server{i}.properties
 ```
-- Start Consumer
+- Start Kafka Consumer
 ```bash
 java -jar kafkanumbertriple.jar 
 ```
