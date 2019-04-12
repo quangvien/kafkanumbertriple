@@ -2,10 +2,10 @@
 A simple demonstration of Kafka messaging system.
 
 ## Description
-A number consumer that consumes numbers from a [Kafka topic](https://github.com/quangnvien/kafkanumberprovider) and triple it. Running this with [kafkanumberdouble](https://github.com/quangnvien/kafkanumberdouble) to see how different Kafka consuming services work. Both services consume the same Kafka topic. 
+A number consumer that consumes numbers from a [Kafka Topic](https://github.com/quangnvien/kafkanumberprovider) and triple it. Running this with [Kafka Number Doubler](https://github.com/quangnvien/kafkanumberdouble) to see how different Kafka consuming services work. Both services consume the same Kafka Topic. 
 
 ## Usage
-- Start Zookeeper
+- Start Zookeeper Server
 ```bash
 bin\zookeeper-server-start.sh config\zookeeper.properties
 ```
@@ -13,7 +13,7 @@ bin\zookeeper-server-start.sh config\zookeeper.properties
 ```bash
 bin\kafka-server-start.sh config\server{i}.properties
 ```
-- Start Kafka Consumer
+- Run Kafka Consumer
 ```bash
 java -jar kafkanumbertriple.jar 
 ```
