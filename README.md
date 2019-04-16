@@ -18,12 +18,13 @@ bin\kafka-server-start.sh config\server{i}.properties
 java -jar kafkanumbertriple.jar 
 ```
 
-## Technical Stack
+## Dependencies
 - Java 12
 - Gradle 5.3.1
 - Spring Boot 2.1.4
 - Spring Kafka 2.2.5 
 - Apache Kafka 2.1.0
+- Eclipse IDE 2019-03
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
