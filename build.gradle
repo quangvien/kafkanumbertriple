@@ -1,27 +1,40 @@
+group = 'gcr.io/spring-docker-kuber'
+
 apply plugin: 'java'
 apply plugin: 'application'
 apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
+apply plugin: 'com.palantir.docker'
 
-sourceCompatibility = 1.12
-targetCompatibility = 1.12
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
 mainClassName = 'vn.quang.KafkaMain'
+
+bootJar {
+    baseName = 'tripler'
+    version =  '0.1.0'
+}
 
 buildscript {
     ext.spring = '2.1.4.RELEASE'
-    ext.kafkaClient = '2.1.0'
+    ext.kafkaClient = '2.2.0'
 	ext.springKafka = '2.2.5.RELEASE'
+	ext.gradleDocker = '0.22.1'
 	ext.jackson =  '2.9.8'
 	ext.slf4jVersion = '1.7.26'
-	ext.log4j = '2.11.2'
+	ext.log4j2 = '2.11.2'
 	
     repositories {
         jcenter()
+        maven {
+        	url "https://plugins.gradle.org/m2/"
+        }
     }
     
     dependencies {
-    	classpath "org.springframework.boot:spring-boot-gradle-plugin:${spring}"	
-    }    
+    	classpath "org.springframework.boot:spring-boot-gradle-plugin:${spring}"
+    	classpath("gradle.plugin.com.palantir.gradle.docker:gradle-docker:${gradleDocker}")	
+    }     
 }
 
 repositories {
@@ -39,5 +52,16 @@ dependencies {
 	compile "org.springframework.boot:spring-boot-starter-parent:$spring"
 	compile "org.springframework.boot:spring-boot-starter-log4j2:$spring"
 	compile "com.fasterxml.jackson.core:jackson-databind:$jackson"	
-  	compile "org.apache.logging.log4j:log4j-core:$log4j"
+  	compile "org.apache.logging.log4j:log4j-core:$log4j2"
+}
+
+task unpack(type: Copy) {
+    dependsOn bootJar
+    from(zipTree(tasks.bootJar.outputs.files.singleFile))
+    into("build/dependency")
+}
+docker {
+    name "${project.group}/${bootJar.baseName}"
+    copySpec.from(tasks.unpack.outputs).into("dependency")
+    buildArgs(['DEPENDENCY': "dependency"])
 }
