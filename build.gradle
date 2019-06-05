@@ -17,8 +17,8 @@ bootJar {
 
 buildscript {
     ext.spring = '2.1.4.RELEASE'
-    ext.kafkaClient = '2.2.0'
-	ext.springKafka = '2.2.5.RELEASE'
+    ext.kafkaClient = '2.2.1'
+	ext.springKafka = '2.2.6.RELEASE'
 	ext.gradleDocker = '0.22.1'
 	ext.jackson =  '2.9.8'
 	ext.slf4jVersion = '1.7.26'
